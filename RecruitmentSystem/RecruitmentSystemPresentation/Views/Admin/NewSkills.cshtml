@@ -1,0 +1,65 @@
+﻿@using RecruitmentSystemBusiness
+@model SkillsModel
+@{
+    ViewBag.Title = "NewSkills";
+}
+<script>
+    function Submitform() {
+        var skillval = $('#skilltxt').val();
+        if(skillval!="")
+        {
+            $(".error").html('');
+            var valdata = $("#addskill").serialize();
+            var urldata = '@Url.Action("NewSkills", "Admin")';
+            $.ajax({
+                url: urldata,
+                data: valdata,
+                type: "POST",
+                datatype: "Json",
+                async: false,
+                error: function () {
+                },
+                success: function (data) {
+                    if (data == 1) {                       
+                        window.location = '@Url.Action("Index", "Admin")';
+                    }
+                    else
+                    {
+                        $.ajax("Something went wrong.");
+                    }
+                }
+            });
+        }
+        else
+        {
+            $(".error").html('Please enter skill Name.');
+        }
+    }
+</script>
+<div>
+    @using (Html.BeginForm(string.Empty, string.Empty, FormMethod.Post, new { id = "addskill" }))
+    {
+        <div class="row">
+            <div style="height: 40px;">
+                <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                    <span style="font-size: 23px;">Add Skill</span>
+                </div>
+                <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="width100 left error" style="padding: 5px 0px 5px 30px;"></div>
+            <div class="width100 left msg" style="padding: 5px 0px 5px 30px;"></div>
+            <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                <span style="font-size: 23px;">Skills Name:</span>
+            </div>
+            <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                @Html.TextBoxFor(e => e.Name, new { @id = "skilltxt", @class = "validateText form-control", @placeholder = "Skill", errorName = "Skill" })
+            </div>
+            <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                <input class="btn btn-primary right" type="button" value="Submit" style="float:left;" onclick="Submitform();">
+            </div>
+        </div>
+    }
+</div>

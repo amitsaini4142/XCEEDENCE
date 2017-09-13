@@ -1,0 +1,26 @@
+[
+    {
+        "Id": 1,
+        "Name": "User1",
+        "College": "",
+        "Branch": "",
+        "IsActive": true,
+        "SkillList": [
+            { "Id": 1, "Name": "C#", "IsFake": false, "IsActive": true },
+            { "Id": 2, "Name": ".Net", "IsFake": false, "IsActive": true },
+            { "Id": 3, "Name": "Java", "IsFake": false, "IsActive": true }
+        ]
+    },
+    {
+        "Id": 2,
+        "Name": "User2",
+        "College": "",
+        "Branch": "",
+        "IsActive": true,
+        "SkillList": [
+            { "Id": 1, "Name": "C#", "IsFake": false, "IsActive": true },
+            { "Id": 2, "Name": ".Net", "IsFake": false, "IsActive": true },
+            { "Id": 3, "Name": "Java", "IsFake": false, "IsActive": true }
+        ]
+    }
+]

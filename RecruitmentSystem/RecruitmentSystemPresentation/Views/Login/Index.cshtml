@@ -1,0 +1,48 @@
+﻿@model RecruitmentSystemBusiness.LoginModel
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script>
+    $(document).ready(function () {
+        if ('@ViewBag.msg' != '') {
+            $('#lblMsg').html('@ViewBag.msg');
+        }
+    });
+    function Validate() {
+        if ($.trim($("#txtUserName").val()).length == 0) {
+            $("#lblMsg").text("Please enter user name");
+            return false;
+        }
+        if ($.trim($("#txtPassword").val()).length == 0) {
+            $("#lblMsg").text("Please enter password");
+            return false;
+        }
+        return true;
+    }
+
+</script>
+
+<section class="mainSect" style="margin-bottom:7%;"></section>
+<section class="mainSect">
+    <div class="module form-module" style="">
+        <div class="form">
+            <h2>Login to your account</h2>
+            @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "login" }))
+            {
+                @Html.TextBoxFor(u => u.UserName, new { @id = "txtUserName", @placeholder = "User Name" })
+                @Html.PasswordFor(u => u.Password, new { @id = "txtPassword", @placeholder = "Password" })
+                <button onclick="return Validate();">Login</button>
+    @Html.ActionLink("Registration", "Index", "Candidate")
+                <div class="error">
+                    <span style="color: #ff0000; font-size: 15px;" id="lblMsg">&nbsp;</span>
+                </div>
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,114 @@
+﻿@using RecruitmentSystemBusiness
+@model CandidateModel
+@{
+    ViewBag.Title = "CandidateDetails";
+    int i = 0;
+}
+<script>
+    function Submitform() {
+        var nameval = $('#txtname').val();
+        if (nameval != "") {
+            $(".error").html('');
+            var valdata = $("#candidatedetails").serialize();
+            var urldata = '@Url.Action("CandidateDetails", "Admin")';
+            $.ajax({
+                url: urldata,
+                data: valdata,
+                type: "POST",
+                datatype: "Json",
+                async: false,
+                error: function () {
+                },
+                success: function (data) {
+                    if (data == 1) {
+                        window.location = '@Url.Action("Index", "Admin")';
+                    }
+                    else {
+                        $.ajax("Something went wrong.");
+                    }
+                }
+            });
+        }
+        else {
+            $(".error").html('Please enter Candidate Name.');
+        }
+    }
+</script>
+
+<div>
+    @using (Html.BeginForm(string.Empty, string.Empty, FormMethod.Post, new { id = "candidatedetails" }))
+    {
+        <div class="row">
+            <div style="height: 40px;">
+                <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                    <span style="font-size: 23px;">Candidate Details</span>
+                </div>
+                <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="width100 left error" style="padding: 5px 0px 5px 30px;"></div>
+            <div class="width100 left msg" style="padding: 5px 0px 5px 30px;"></div>
+            <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                <span style="font-size: 23px;">Candidate Name:</span>
+            </div>
+            <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                @Html.TextBoxFor(e => e.Name, new { @id = "txtname", @class = "validateText form-control", @placeholder = "Candidate Name", errorName = "Candidate Name" })
+                @Html.HiddenFor(e => e.Id, new { @id = "txtid" })
+                @Html.HiddenFor(e => e.IsActive, new { @id = "txtisactive" })
+            </div>
+            <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                <span style="font-size: 23px;">College Name:</span>
+            </div>
+            <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                @Html.TextBoxFor(e => e.College, new { @id = "txtcollege", @class = "validateText form-control", @placeholder = "College Name", errorName = "College Name" })
+            </div>
+            <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                <span style="font-size: 23px;">Branch Name:</span>
+            </div>
+            <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                @Html.TextBoxFor(e => e.Branch, new { @id = "txtbranch", @class = "validateText form-control", @placeholder = "Branch Name", errorName = "Branch Name" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="row">
+                <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                    <span style="font-size: 23px;">Skills Details</span>
+                </div>
+                <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                </div>
+            </div>
+            <table class="table table-striped table-bordered" cellspacing="0" style="width:100%;">
+                <thead>
+                    <tr>
+                        <th>IsFake</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.SkillList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.CheckBoxFor(e => Model.SkillList[i].IsFake, new { @id = "txtisfake", @class = "checkbox checkcode", errorName = "Expense" })
+                            </td>
+                            <td>
+                                @Html.HiddenFor(m => Model.SkillList[i].Name)
+                                @Html.HiddenFor(m => Model.SkillList[i].IsActive)
+                                @Html.HiddenFor(m => Model.SkillList[i].Id)
+                                @item.Name
+                            </td>
+                        </tr>
+                        i++;
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                <input class="btn btn-primary right" type="button" value="Submit" style="float:left;" onclick="Submitform();">
+            </div>
+        </div>
+    }
+</div>

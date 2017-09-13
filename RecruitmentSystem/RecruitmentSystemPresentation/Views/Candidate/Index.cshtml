@@ -1,0 +1,99 @@
+﻿@model RecruitmentSystemBusiness.CandidateModel
+@{
+    Layout = null;
+}
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script>
+    var data = [];
+    $(document).ready(function () {
+        $('#btnSubmit').on('click', function () {
+            if ($('#txtName').val() == "") {
+                $("#showMessage").html("Please enter user name");
+                return false;
+            }
+            if ($('#txtCollege').val() == "") {
+                $("#showMessage").html("Please enter College");
+                return false;
+            } if ($('#txtBranch').val() == "") {
+                $("#showMessage").html("Please enter Branch");
+                return false;
+            }
+            else {
+                $('.ddlSkills').find('option:selected').each(function () {
+                    var item = {};
+                    item.Id = $(this).val();
+                    item.Name = $(this).text();
+                    item.IsActive = true;
+                    item.IsFake = false;
+                    data.push(item);
+                    //data.push({ value: $(this).val(), text: $(this).text() });
+                });
+                if (data.length > 0) {
+                    $("#showMessage").html("");
+                    var urldata = '@Url.Action("Index", "Candidate")';
+                    var newdata = $('#frmCandidate').serialize() + "&skill=" + JSON.stringify(data);
+                    $.ajax({
+                        url: urldata,
+                        data: newdata,
+                        type: "POST",
+                        datatype: "Json",
+                        error: function () {
+                        },
+                        success: function (data) {
+                            if (data == "1") {
+                                $('#frmCandidate').hide();
+                                $('#showMessage').html("Data Inserted Successfully.");
+                            }
+                            else {
+                                $.ajax("Something went wrong.");
+                            }
+                        }
+                    });
+                }
+                else {
+                    $('#showMsg').text('Please Select atLeast 1 Skill.');
+                    return false;
+                }
+            }
+        });
+
+    });
+
+</script>
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { @id = "frmCandidate", @name = "frmCandidate" }))
+{
+
+    <div class="panel panel-heading"><h2 class="text-center">Registration</h2></div>
+    <div class="container well">
+        <div class="form-group row">
+            <div id="showMessage"></div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-2">Name</label>
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @Id = "txtName" })
+
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-2">College</label>
+            @Html.TextBoxFor(m => m.College, new { @class = "form-control", @Id = "txtCollege" })
+
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-2">Branch</label>
+            @Html.TextBoxFor(m => m.Branch, new { @class = "form-control", @Id = "txtBranch" })
+
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-2">Skills</label>
+            @Html.DropDownListFor(m => m.SkillList, new SelectList(Model.SkillList, "Id", "Name"), new { @multiple = "multiple", @class = "form-control ddlSkills" })
+            <span id="showMsg"></span>
+        </div>
+        <div class="form-group row">
+            <button type="button" class="btn btn-success" id="btnSubmit">Submit</button>
+        </div>
+    </div>
+}

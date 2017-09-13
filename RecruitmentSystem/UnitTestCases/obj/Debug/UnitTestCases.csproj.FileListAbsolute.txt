@@ -1,0 +1,9 @@
+E:\Polestar Projects\RecruitmentSystemNew\RecruitmentSystem\UnitTestCases\bin\Debug\UnitTestCases.dll
+E:\Polestar Projects\RecruitmentSystemNew\RecruitmentSystem\UnitTestCases\bin\Debug\UnitTestCases.pdb
+E:\Polestar Projects\RecruitmentSystemNew\RecruitmentSystem\UnitTestCases\bin\Debug\RecruitmentSystemBusiness.dll
+E:\Polestar Projects\RecruitmentSystemNew\RecruitmentSystem\UnitTestCases\bin\Debug\Newtonsoft.Json.dll
+E:\Polestar Projects\RecruitmentSystemNew\RecruitmentSystem\UnitTestCases\bin\Debug\RecruitmentSystemBusiness.pdb
+E:\Polestar Projects\RecruitmentSystemNew\RecruitmentSystem\UnitTestCases\bin\Debug\Newtonsoft.Json.xml
+E:\Polestar Projects\RecruitmentSystemNew\RecruitmentSystem\UnitTestCases\obj\Debug\UnitTestCases.csprojResolveAssemblyReference.cache
+E:\Polestar Projects\RecruitmentSystemNew\RecruitmentSystem\UnitTestCases\obj\Debug\UnitTestCases.dll
+E:\Polestar Projects\RecruitmentSystemNew\RecruitmentSystem\UnitTestCases\obj\Debug\UnitTestCases.pdb

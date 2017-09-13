@@ -1,0 +1,11 @@
+D:\Demo\RecruitmentSystem\RecruitmentSystemBusiness\bin\Debug\RecruitmentSystemBusiness.dll
+D:\Demo\RecruitmentSystem\RecruitmentSystemBusiness\bin\Debug\RecruitmentSystemBusiness.pdb
+D:\Demo\RecruitmentSystem\RecruitmentSystemBusiness\obj\Debug\RecruitmentSystemBusiness.csprojResolveAssemblyReference.cache
+D:\Demo\RecruitmentSystem\RecruitmentSystemBusiness\obj\Debug\RecruitmentSystemBusiness.dll
+D:\Demo\RecruitmentSystem\RecruitmentSystemBusiness\obj\Debug\RecruitmentSystemBusiness.pdb
+E:\Polestar Projects\RecruitmentSystemNew\RecruitmentSystem\RecruitmentSystemBusiness\bin\Debug\RecruitmentSystemBusiness.dll
+E:\Polestar Projects\RecruitmentSystemNew\RecruitmentSystem\RecruitmentSystemBusiness\bin\Debug\RecruitmentSystemBusiness.pdb
+E:\Polestar Projects\RecruitmentSystemNew\RecruitmentSystem\RecruitmentSystemBusiness\bin\Debug\Newtonsoft.Json.dll
+E:\Polestar Projects\RecruitmentSystemNew\RecruitmentSystem\RecruitmentSystemBusiness\bin\Debug\Newtonsoft.Json.xml
+E:\Polestar Projects\RecruitmentSystemNew\RecruitmentSystem\RecruitmentSystemBusiness\obj\Debug\RecruitmentSystemBusiness.dll
+E:\Polestar Projects\RecruitmentSystemNew\RecruitmentSystem\RecruitmentSystemBusiness\obj\Debug\RecruitmentSystemBusiness.pdb

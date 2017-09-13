@@ -1,0 +1,56 @@
+﻿@using RecruitmentSystemBusiness
+@model List<SkillsModel>
+@{
+    ViewBag.Title = "Index";
+}
+<script>
+    function Search() {
+        var skillval = $('#skilltxt').val();
+        var valdata = { skillId: skillval }
+        var urldata = '@Url.Action("Searchskills", "Admin")';
+        $.ajax({
+            url: urldata,
+            data: valdata,
+            type: "GET",
+            datatype: "Json",
+            error: function () {
+            },
+            success: function (data) {
+                $("#AllSkills").html('');
+                $("#AllSkills").html(data);
+            }
+        });
+    }
+    function AddSkills() {
+        var urldata = '@Url.Action("NewSkills", "Admin")';
+        window.location = urldata;
+    }
+</script>
+<div id="IndexSkills">
+    <div class="row">
+        <div style="height: 40px;">
+            <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                <span style="font-size: 23px;">Search Candidate By Skills</span>
+            </div>
+            <div class="col-sx-6 col-sm-6 col-md-6 col-lg-6">
+                <input class="btn btn-primary" onclick="AddSkills();" type="button" value="Add Skills" style="float:right">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <div class="col-sx-4 col-sm-4 col-md-4 col-lg-4">
+                <span style="font-size: 23px;">Candidate Skills</span>
+            </div>
+            <div class="col-sx-4 col-sm-4 col-md-4 col-lg-4">
+                @Html.DropDownList("Id", new SelectList(Model, "Id", "Name"), "--Select--", new { @id = "skilltxt" })
+                @*<input type="text" id="skilltxt" placeholder="Type Candidate Skills">*@
+            </div>
+            <div class="col-sx-4 col-sm-4 col-md-4 col-lg-4">
+                <input class="btn btn-primary right" onclick="Search();" type="button" value="Search">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="AllSkills"></div>
+
